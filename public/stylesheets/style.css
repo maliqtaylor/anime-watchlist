@@ -1,0 +1,41 @@
+ html {
+ box-sizing: border-box
+}
+
+*, /* All elements*/
+*::before, /* All ::before pseudo-elements */
+*::after { /* All ::after pseudo-elements */
+ box-sizing: inherit;
+}
+
+:root {
+ font-size: 62.5%
+}
+
+body {
+ margin: 0;
+ max-height: 100vh;
+ text-align: center;
+}
+
+
+
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+.card-content{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-content * {
+  margin: 5px;
+}
+
+.card-reveal *{
+  font-size: 3.8px
+}

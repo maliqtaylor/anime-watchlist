@@ -1,3 +1,63 @@
-<%- include('partials/header') %>
+<%- include('../partials/header') %>
+  <h1>
+    <%= title %>
+  </h1>
 
-<%- include('partials/footer') %>
+  <div class="container">
+
+    <div class="row">
+
+      <% for(let i=0; i < 3; i ++){ %>
+
+        <div class="card col s4">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src=<%=data[i].attributes.posterImage.small %> >
+          </div>
+
+          <div class="card-content">
+
+            <p>
+              <a href="#"><i class="material-icons tiny">info_outline</i></a>
+            </p>
+
+            <p>
+              <a href="#"><i class="material-icons tiny">add</i></a>
+            </p>
+
+
+          </div>
+
+          <div class="card-reveal">
+
+            <p class="card-title">
+              <i class="material-icons small">
+                chevron_left
+              </i>
+            </p>
+
+            <strong>
+              <p>
+                <%= data[i].attributes.titles.en %>
+              </p>
+            </strong>
+
+            <p>
+              <%= data[i].attributes.synopsis %>
+            </p>
+            =
+
+          </div>
+
+        </div>
+
+        <% } %>
+
+
+    </div>
+
+  </div>
+
+
+
+
+  <%- include('../partials/footer') %>

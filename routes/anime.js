@@ -1,8 +1,7 @@
 const router = require("express").Router();
+const animeCtrl = require('../controllers/anime')
 
-router.get("/", (req, res) => {
-  res.render("anime/index", { title: "Anime Index", user: req.user ? req.user : null });
-});
+router.get("/", isLoggedIn, animeCtrl.index);
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();
