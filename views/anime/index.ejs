@@ -3,61 +3,38 @@
     <%= title %>
   </h1>
 
-  <div class="container">
+  <div class="container center-align">
+    <%- include('../partials/search') %>
+      <div class="row">
+        <% for(let i=0; i < data.length; i ++){ %>
+          <div class="card col s3">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src=<%=data[i].attributes.posterImage.small %> >
+            </div>
 
-    <div class="row">
-
-      <% for(let i=0; i < 3; i ++){ %>
-
-        <div class="card col s4">
-          <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator" src=<%=data[i].attributes.posterImage.small %> >
-          </div>
-
-          <div class="card-content">
-
-            <p>
-              <a href="#"><i class="material-icons tiny">info_outline</i></a>
-            </p>
-
-            <p>
-              <a href="#"><i class="material-icons tiny">add</i></a>
-            </p>
-
-
-          </div>
-
-          <div class="card-reveal">
-
-            <p class="card-title">
-              <i class="material-icons small">
-                chevron_left
-              </i>
-            </p>
-
-            <strong>
-              <p>
-                <%= data[i].attributes.titles.en %>
+            <div class="card-content">
+              <p id="anime-info">
+                <a href="#"><i class="material-icons small">info_outline</i></a>
               </p>
-            </strong>
 
-            <p>
-              <%= data[i].attributes.synopsis %>
-            </p>
-            =
-
+              <p id="anime-add">
+                <a href="#"><i class="material-icons small">add</i></a>
+              </p>
+            </div>
           </div>
+          <% } %>
+      </div>
 
-        </div>
-
-        <% } %>
-
-
-    </div>
+      <ul class="pagination">
+        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+        <li class="active"><a href="#!">1</a></li>
+        <li class="waves-effect"><a href="#!">2</a></li>
+        <li class="waves-effect"><a href="#!">3</a></li>
+        <li class="waves-effect"><a href="#!">4</a></li>
+        <li class="waves-effect"><a href="#!">5</a></li>
+        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+      </ul>
 
   </div>
-
-
-
 
   <%- include('../partials/footer') %>
