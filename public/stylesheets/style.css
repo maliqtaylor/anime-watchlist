@@ -11,6 +11,11 @@
 body {
   margin: 0;
   text-align: center;
+  background-image: url('../images/mikasa.jpg'), url('../images/katane.jpg');
+  background-position: right bottom, left bottom;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 15%, 20%;
 }
 
 img{
