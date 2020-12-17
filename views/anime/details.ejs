@@ -7,11 +7,58 @@
       </div>
       <div class="col s6">
         <h3 class="flow-text">
-          <%= anime.attributes.titles.en %>
+          <% if (anime.attributes.titles.en) { %>
+            <%= anime.attributes.titles.en %>
+              <% } else { %>
+                <%= anime.attributes.titles.en_jp %>
+                  <% } %>
         </h3>
         <p class="flow-text">
           <%= anime.attributes.titles.ja_jp %>
         </p>
+        <div class="status-container flow-text">
+          <p class="flow-text">
+            Status:
+          </p>
+          <p class="flow-text status <%=anime.attributes.status %>">
+            <%= anime.attributes.status %>
+          </p>
+        </div>
+        <div class="anime-sub-data">
+          <p>
+            <i class="material-icons">
+              <%= anime.attributes.showType==='TV' ? 'live_tv' : 'local_movies' %>
+            </i>
+          </p>
+          <p class="sep">
+            |
+          </p>
+          <p class="flow-text">
+            Rated: <%= anime.attributes.ageRating %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="detail-page-links col s3">
+        <a href="/anime">
+          <i class="material-icons">chevron_left</i>
+        </a>
+      </div>
+      <div class="detail-page-links col s3">
+        <a href="#">
+          <i class="material-icons">add</i>
+        </a>
+      </div>
+      <div class="detail-page-links col s3">
+        <a href="#">
+          <i class="material-icons">mode_comment</i>
+        </a>
+      </div>
+      <div class="detail-page-links col s3">
+        <a href="#">
+          <i class="material-icons">favorite_border</i>
+        </a>
       </div>
     </div>
     <div class="row">

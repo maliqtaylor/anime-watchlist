@@ -19,14 +19,21 @@ img{
 }
 
 :root {
- font-size: 60%
+ font-size: 55%
 }
 
-.card-content{
+.card-content, 
+.status-container,  
+.anime-sub-data,
+.detail-page-links{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+
+.status-container .status{
+  margin-left: 5px;
 }
 
 .card-title{
@@ -40,4 +47,13 @@ img{
 
 .searchbar{
   border-radius: 35px;
+}
+
+.finished{
+  color: red;
+}
+
+.sep{
+  margin-left: 2px;
+  margin-right: 2px;
 }
