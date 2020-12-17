@@ -26,19 +26,19 @@
       <ul class="right hide-on-med-and-down">
         <% if (user) { %>
           <li>
-            <a href="/anime">Anime Index</a>
+            <a class="flow-text" href="/anime">Anime Index</a>
           </li>
 
           <li>
-            <a href="/users/<%=user.id%>">Profile</a>
+            <a class="flow-text" href="/users/<%=user.id%>">Profile</a>
           </li>
 
           <li>
-            <a href="/auth/logout">Log Out</a>
+            <a class="flow-text" href="/auth/logout">Log Out</a>
           </li>
           <% } else { %>
             <li>
-              <a href="/auth/google">Login with Google</a>
+              <a class="flow-text" href="/auth/google">Login with Google</a>
             </li>
             <% } %>
       </ul>
@@ -48,19 +48,19 @@
   <ul class="sidenav" id="mobile-demo">
     <% if (user) { %>
       <li>
-        <a href="/anime">Anime Index</a>
+        <a class="flow-text" href="/anime">Anime Index</a>
       </li>
 
       <li>
-        <a href="/users/<%=user.id%>">Profile</a>
+        <a class="flow-text" href="/users/<%=user.id%>">Profile</a>
       </li>
 
       <li>
-        <a href="/auth/logout">Log Out</a>
+        <a class="flow-text" href="/auth/logout">Log Out</a>
       </li>
       <% } else { %>
         <li>
-          <a href="/auth/google">Login with Google</a>
+          <a class="flow-text" href="/auth/google">Login with Google</a>
         </li>
         <% } %>
   </ul>
