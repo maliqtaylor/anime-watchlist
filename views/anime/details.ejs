@@ -1,10 +1,29 @@
 <%- include('../partials/header') %>
-  <h1>
-    <%= title %>
-  </h1>
 
-  <p>
-    <%= anime.attributes.slug %>
-  </p>
+  <div class="container center-align">
+    <div class="row">
+      <div class="col s6">
+        <img src="<%= anime.attributes.posterImage.small %>" alt="Anime Poster Image">
+      </div>
+      <div class="col s6">
+        <h3 class="flow-text">
+          <%= anime.attributes.titles.en %>
+        </h3>
+        <p class="flow-text">
+          <%= anime.attributes.titles.ja_jp %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <em>
+          <h6>Synopsis</h6>
+        </em>
+        <p>
+          <%= anime.attributes.synopsis %>
+        </p>
+      </div>
+    </div>
+  </div>
 
   <%- include('../partials/footer') %>

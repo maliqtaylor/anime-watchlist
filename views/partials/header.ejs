@@ -30,6 +30,10 @@
           </li>
 
           <li>
+            <a href="/users/<%=user.id%>">Profile</a>
+          </li>
+
+          <li>
             <a href="/auth/logout">Log Out</a>
           </li>
           <% } else { %>
@@ -45,6 +49,10 @@
     <% if (user) { %>
       <li>
         <a href="/anime">Anime Index</a>
+      </li>
+
+      <li>
+        <a href="/users/<%=user.id%>">Profile</a>
       </li>
 
       <li>

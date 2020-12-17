@@ -8,19 +8,18 @@
       <div class="row">
         <% for(let i=0; i < data.length; i ++){ %>
           <div class="card col s3">
-            <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src=<%=data[i].attributes.posterImage.small %> >
-            </div>
+            <a href="/anime/<%=data[i].id%>">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src=<%=data[i].attributes.posterImage.small %> >
+              </div>
+            </a>
 
             <div class="card-content">
-              <p id="anime-info">
-                <a href="/anime/<%=data[i].id%>"><i class="material-icons small">info_outline</i></a>
-              </p>
-
               <p id="anime-add">
                 <a href="#"><i class="material-icons small">add</i></a>
               </p>
             </div>
+
           </div>
           <% } %>
       </div>
