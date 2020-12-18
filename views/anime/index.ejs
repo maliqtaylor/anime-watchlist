@@ -9,20 +9,12 @@
         <div class="card anime-card col s3">
           <a href="/anime/<%=data[i].id%>">
             <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src=<%=data[i].attributes.posterImage.small %> >
+              <img src=<%=data[i].attributes.posterImage.small %> >
+            </div>
+            <div class="card-content">
+              <i class="material-icons small">info_outline</i>
             </div>
           </a>
-
-          <div class="card-content">
-            <form action="/watchlist" method="POST">
-              <input type="hidden" name="imageUrl" value=<%=data[i].attributes.posterImage.small%>>
-              <input type="hidden" name="slug" value=<%=data[i].attributes.slug %>>
-              <input type="hidden" name="kitsuId" value=<%=data[i].id%>>
-              <button type="submit" class="waves-effect waves-light transparent"> <i class="material-icons">add</i>
-              </button>
-            </form>
-          </div>
-
         </div>
         <% } %>
     </div>

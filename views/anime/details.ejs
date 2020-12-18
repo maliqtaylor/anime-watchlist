@@ -46,9 +46,12 @@
         </a>
       </div>
       <div class="detail-page-links col s3">
-        <a href="#">
-          <i class="material-icons">add</i>
-        </a>
+        <form action="/watchlist" method="POST">
+          <input type="hidden" name="imageUrl" value=<%=anime.attributes.posterImage.small%>>
+          <input type="hidden" name="slug" value=<%=anime.attributes.slug %>>
+          <input type="hidden" name="kitsuId" value=<%=anime.id%>>
+          <button type="submit" class="waves-effect waves-light transparent"> <i class="material-icons">add</i>
+          </button>
       </div>
       <div class="detail-page-links col s3">
         <a href="#">
