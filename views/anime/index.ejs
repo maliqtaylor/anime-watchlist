@@ -14,9 +14,13 @@
           </a>
 
           <div class="card-content">
-            <p id="anime-add">
-              <a href="#"><i class="material-icons small">add</i></a>
-            </p>
+            <form action="/watchlist" method="POST">
+              <input type="hidden" name="imageUrl" value=<%=data[i].attributes.posterImage.small%>>
+              <input type="hidden" name="slug" value=<%=data[i].attributes.slug %>>
+              <input type="hidden" name="kitsuId" value=<%=data[i].id%>>
+              <button type="submit" class="waves-effect waves-light transparent"> <i class="material-icons">add</i>
+              </button>
+            </form>
           </div>
 
         </div>
@@ -25,8 +29,8 @@
     <% }%>
 
       <div class="container center-align">
-        <div class="row search-col">
-          <div class="col s10">
+        <div class="row">
+          <div class="col s12">
             <%- include('../partials/search') %>
           </div>
         </div>
@@ -34,16 +38,15 @@
           <%= displayAnime(4,8) %>
             <%= displayAnime(8,12) %>
               <%= displayAnime(12,16) %>
-                <%= displayAnime(16,20) %>
-                  <ul class="pagination">
-                    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                    <li class="active"><a href="#!">1</a></li>
-                    <li class="waves-effect"><a href="#!">2</a></li>
-                    <li class="waves-effect"><a href="#!">3</a></li>
-                    <li class="waves-effect"><a href="#!">4</a></li>
-                    <li class="waves-effect"><a href="#!">5</a></li>
-                    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-                  </ul>
+                <ul class="pagination">
+                  <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                  <li class="active"><a href="#!">1</a></li>
+                  <li class="waves-effect"><a href="#!">2</a></li>
+                  <li class="waves-effect"><a href="#!">3</a></li>
+                  <li class="waves-effect"><a href="#!">4</a></li>
+                  <li class="waves-effect"><a href="#!">5</a></li>
+                  <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                </ul>
 
       </div>
 

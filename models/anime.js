@@ -3,12 +3,9 @@ const { Schema } = mongoose;
 
 const animeSchema = new Schema(
   {
-    title: String,
-    slug: String,
+    slug: { type: String },
     kitsuId: Number,
-    released: Date,
-    imageUrl: String,
-    synopsis: String,
+    imageUrl: { type: String },
     favoritedBy: [{ type: Schema.Types.ObjectId, ref: "User" }]
   },
   {

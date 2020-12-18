@@ -23,6 +23,16 @@ img{
   height: auto;
 }
 
+button{
+  border: none;
+  background-color: white;
+  color: dodgerblue;
+}
+
+button:hover{
+  color: hotpink;
+}
+
 :root {
  font-size: 55%
 }
@@ -37,10 +47,6 @@ img{
   flex-direction: row;
   align-items: center;
   justify-content: center;
-}
-
-.search-col{
-  margin-right: 15%;
 }
 
 .anime-card{

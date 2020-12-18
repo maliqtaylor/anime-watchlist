@@ -1,9 +1,7 @@
 const router = require("express").Router();
-const animeCtrl = require('../controllers/anime')
+const watchlistCtrl = require('../controllers/watchlists')
 
-router.get("/", isLoggedIn, animeCtrl.index);
-router.get('/:id', isLoggedIn, animeCtrl.details);
-router.post('/', animeCtrl.create)
+router.post('/', isLoggedIn, watchlistCtrl.create)
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();

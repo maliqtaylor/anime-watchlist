@@ -30,7 +30,7 @@
           </li>
 
           <li>
-            <a class="flow-text" href="/users/<%=user.id%>">Watch List</a>
+            <a class="flow-text" href="/watchlist/<%=user.id%>">Watch List</a>
           </li>
 
           <li>
@@ -53,6 +53,10 @@
     <% if (user) { %>
       <li>
         <a class="flow-text" href="/anime">Anime Index</a>
+      </li>
+
+      <li>
+        <a class="flow-text" href="/watchlist/<%=user.id%>">Watch List</a>
       </li>
 
       <li>
