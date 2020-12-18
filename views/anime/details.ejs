@@ -1,11 +1,11 @@
 <%- include('../partials/header') %>
 
   <div class="container center-align">
-    <div class="row">
+    <div class="row anime-data-holder">
       <div class="col s6">
         <img src="<%= anime.attributes.posterImage.small %>" alt="Anime Poster Image">
       </div>
-      <div class="col s6">
+      <div class="col s6 anime-data">
         <h3 class="flow-text">
           <% if (anime.attributes.titles.en) { %>
             <%= anime.attributes.titles.en %>
@@ -63,7 +63,7 @@
     </div>
     <div class="row">
       <div class="col s12">
-        <div class="card-panel">
+        <div class="card-panel gradient-box">
           <em>
             <h6 class="flow-text">Synopsis</h6>
           </em>

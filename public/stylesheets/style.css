@@ -28,13 +28,24 @@ img{
 }
 
 .card-content, 
-.status-container,  
+.status-container,
+.anime-data-holder,
 .anime-sub-data,
-.detail-page-links{
+.detail-page-links,
+.search-col{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+
+.search-col{
+  margin-right: 15%;
+}
+
+.anime-card{
+  border: black 1px solid;
+  border-radius: 5px;
 }
 
 .status-container .status{
@@ -51,7 +62,8 @@ img{
 }
 
 .searchbar{
-  border-radius: 35px;
+  border-radius: 50px;
+  border: dodgerblue solid 1px;
 }
 
 .finished{
@@ -61,4 +73,47 @@ img{
 .sep{
   margin-left: 2px;
   margin-right: 2px;
+}
+
+.anime-data{
+  border-width: 3px;
+  border-style: solid;
+  border-image: 
+    linear-gradient(
+      to bottom, 
+      dodgerblue, 
+      rgba(0, 0, 0, 0)
+    ) 1 100%;
+}
+
+a:hover{
+  color: hotpink;
+}
+
+.nav-wrapper{
+  background-color: dodgerblue;
+}
+
+.gradient-box {
+	 margin: auto;
+	 position: relative;
+	 box-sizing: border-box;
+	 color: #fff;
+	 background: #000;
+	 background-clip: padding-box;
+	 border: solid 1rem transparent;
+}
+ .gradient-box:before {
+	 content: '';
+	 position: absolute;
+	 top: 0;
+	 right: 0;
+	 bottom: 0;
+	 left: 0;
+	 z-index: -1;
+	 margin: -5px;
+
+	 border-radius: inherit;
+
+	 background: linear-gradient(to right, hotpink, dodgerblue);
 }

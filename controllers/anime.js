@@ -17,6 +17,7 @@ function details(req, res) {
   axios
     .get(`https://kitsu.io/api/edge/anime/${req.params.id}`)
     .then((response) => {
+      //if anime isnt in the db add mvp info here and then display the page
       Anime.findOne({ slug: response.data.slug })
         .populate('favoritedBy')
         .then((anime) => {
