@@ -7,9 +7,9 @@
     <div class="row">
       <% for(let i=start; i < end; i ++){ %>
         <div class="card anime-card col s3">
-          <a href="/anime/<%=data[i].id%>">
+          <a href="/anime/<%=anime[i].id%>">
             <div class="card-image waves-effect waves-block waves-light">
-              <img src=<%=data[i].attributes.posterImage.small %> >
+              <img src=<%=anime[i].attributes.posterImage.small %> >
             </div>
             <div class="card-content">
               <i class="material-icons small">info_outline</i>
@@ -26,20 +26,12 @@
             <%- include('../partials/search') %>
           </div>
         </div>
-        <%= displayAnime(0,4) %>
-          <%= displayAnime(4,8) %>
-            <%= displayAnime(8,12) %>
-              <%= displayAnime(12,16) %>
-                <ul class="pagination">
-                  <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                  <li class="active"><a href="#!">1</a></li>
-                  <li class="waves-effect"><a href="#!">2</a></li>
-                  <li class="waves-effect"><a href="#!">3</a></li>
-                  <li class="waves-effect"><a href="#!">4</a></li>
-                  <li class="waves-effect"><a href="#!">5</a></li>
-                  <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-                </ul>
-
+        <%- include('../partials/pagination') %>
+          <%= displayAnime(0,4) %>
+            <%= displayAnime(4,8) %>
+              <%= displayAnime(8,12) %>
+                <%= displayAnime(12,16) %>
+                  <%- include('../partials/pagination') %>
       </div>
 
       <%- include('../partials/footer') %>

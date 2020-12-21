@@ -42,7 +42,8 @@ button:hover{
 .anime-data-holder,
 .anime-sub-data,
 .detail-page-links,
-.search-col{
+.search-col,
+.user-row{
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -98,6 +99,11 @@ a:hover{
 
 .nav-wrapper{
   background-color: dodgerblue;
+}
+
+.avatar{
+  border-radius: 50%;
+  margin-left: -10vw;
 }
 
 .gradient-box {

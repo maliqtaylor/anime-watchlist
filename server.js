@@ -53,7 +53,7 @@ app.use("/", indexRouter);
 app.use("/auth", authRouter);
 app.use("/anime", animeRouter)
 app.use("/users", userRouter)
-app.use("/watchlist/", watchlistRouter)
+app.use("/watchlist", watchlistRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

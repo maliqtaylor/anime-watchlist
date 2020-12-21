@@ -1,16 +1,39 @@
 const axios = require('axios');
 const Anime = require('../models/anime')
+let num = 0
 
 module.exports = {
   index,
   details,
-  create
+  create,
+  prev,
+  next,
 }
 
 function index(req, res) {
-  axios.get(`https://kitsu.io/api/edge/anime?page[limit]=16&page[offset]=0`)
+  num = 0
+  const api = `https://kitsu.io/api/edge/anime?page%5Blimit%5D=16&page%5Boffset%5D=${num}`
+  axios.get(api)
     .then((resp) => {
-      res.render("anime/index", { title: "Anime Index", user: req.user ? req.user : null, data: resp.data.data });
+      res.render("anime/index", { title: "Anime Index", user: req.user ? req.user : null, anime: resp.data.data, links: resp.data.links, num: num });
+    })
+}
+
+function next(req, res) {
+  num += 16
+  const api = `https://kitsu.io/api/edge/anime?page%5Blimit%5D=16&page%5Boffset%5D=${num}`
+  axios.get(api)
+    .then((resp) => {
+      res.render("anime/index", { title: "Anime Index", user: req.user ? req.user : null, anime: resp.data.data, links: resp.data.links, num: num });
+    })
+}
+
+function prev(req, res) {
+  num -= 16
+  const api = `https://kitsu.io/api/edge/anime?page%5Blimit%5D=16&page%5Boffset%5D=${num}`
+  axios.get(api)
+    .then((resp) => {
+      res.render("anime/index", { title: "Anime Index", user: req.user ? req.user : null, anime: resp.data.data, links: resp.data.links, num: num });
     })
 }
 

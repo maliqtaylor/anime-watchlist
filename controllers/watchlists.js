@@ -2,7 +2,8 @@ const Watchlist = require('../models/watchlist')
 const Anime = require('../models/anime')
 
 module.exports = {
-  create
+  create,
+  details,
 }
 
 function addToWatchlist(req, res) {
@@ -18,7 +19,7 @@ function addToWatchlist(req, res) {
         req.body.anime = anime._id
         Watchlist.create(req.body)
           .then(() => {
-            res.redirect(`/anime`)
+            res.redirect(`/anime${anime._id}`)
             ///watchlist/${req.user._id}
           })
       })
@@ -27,7 +28,7 @@ function addToWatchlist(req, res) {
         watchlist.anime.push(anime._id)
         watchlist.save()
       })
-      res.redirect('/anime')
+      res.redirect(`/anime${anime._id}`)
     }
   })
 }
@@ -45,4 +46,8 @@ function create(req, res) {
       addToWatchlist(req, res)
     }
   })
+}
+
+function details(req, res) {
+  res.render('watchlist/details', { title: 'Watchlist', user: req.user ? req.user : null })
 }
