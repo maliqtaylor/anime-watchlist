@@ -19,7 +19,7 @@ function addToWatchlist(req, res) {
         req.body.anime = anime._id
         Watchlist.create(req.body)
           .then(() => {
-            res.redirect(`/anime${anime._id}`)
+            res.redirect(`/anime/${anime.kitsuId}`)
             ///watchlist/${req.user._id}
           })
       })
@@ -27,8 +27,8 @@ function addToWatchlist(req, res) {
       Anime.findOne({ slug: req.body.slug }, (err, anime) => {
         watchlist.anime.push(anime._id)
         watchlist.save()
+        res.redirect(`/anime/${anime.kitsuId}`)
       })
-      res.redirect(`/anime${anime._id}`)
     }
   })
 }
