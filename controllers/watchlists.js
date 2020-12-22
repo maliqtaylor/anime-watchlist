@@ -1,5 +1,6 @@
 const Watchlist = require('../models/watchlist')
 const Anime = require('../models/anime')
+const watchlist = require('../models/watchlist')
 
 module.exports = {
   create,
@@ -51,7 +52,15 @@ function create(req, res) {
 }
 
 function details(req, res) {
-  res.render('watchlist/details', { title: 'Watchlist', user: req.user ? req.user : null })
+  Watchlist.findOne({
+    owner: req.user._id
+  })
+    .populate('anime')
+    .then((watchlist) => {
+      res.render('watchlist/details', { title: 'Watchlist', user: req.user ? req.user : null, watchlist })
+    })
+
+
 }
 
 function remove(req, res) {

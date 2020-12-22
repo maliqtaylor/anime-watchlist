@@ -17,10 +17,14 @@ function profile(req, res) {
     .populate('anime')
     .then((favorite) => {
       data.anime = favorite.anime
-    }).then(() => {
+    })
+    .then(() => {
       User.findById(req.user._id)
         .then((user) => {
           res.render("users/profile", { title: "Profile Page", user, anime: data.anime })
+        }).catch((err) => {
+          console.log(err);
+          res.render("error")
         })
     })
 }
