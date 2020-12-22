@@ -6,8 +6,6 @@
 
 ---
 <img src = "https://i.imgur.com/tepZWpC.png">
----
-
 
 ## ERD
 <img src = "https://i.imgur.com/LZOQswe.png">
