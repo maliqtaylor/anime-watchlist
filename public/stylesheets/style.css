@@ -101,9 +101,15 @@ a:hover{
   background-color: dodgerblue;
 }
 
+.profile{
+  margin-top: 1%;
+}
+
+
 .avatar{
   border-radius: 50%;
   margin-left: -10vw;
+  margin-bottom: 8px;
 }
 
 .gradient-box {
