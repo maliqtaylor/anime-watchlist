@@ -4,18 +4,20 @@
   </h1>
   <div class="container">
     <div class="row">
-      <% watchlist.anime.forEach(a=> { %>
-        <div class="card anime-card col s3">
-          <a href="/anime/<%=a.kitsuId%>">
-            <div class="card-image waves-effect waves-block waves-light">
-              <img src=<%=a.imageUrl %> >
-            </div>
-            <div class="card-content">
-              <i class="material-icons small">info_outline</i>
-            </div>
-          </a>
-        </div>
-        <% }) %>
+      <% if (watchlist) { %>
+        <% watchlist.anime.forEach(a=> { %>
+          <div class="card anime-card col s3">
+            <a href="/anime/<%=a.kitsuId%>">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img src=<%=a.imageUrl %> >
+              </div>
+              <div class="card-content">
+                <i class="material-icons small">info_outline</i>
+              </div>
+            </a>
+          </div>
+          <% }) %>
+            <% } %>
     </div>
   </div>
   <%- include('../partials/footer') %>
