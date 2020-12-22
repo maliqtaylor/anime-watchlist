@@ -9,6 +9,7 @@ module.exports = {
 };
 
 function profile(req, res) {
+  console.log('I Hit!!!');
   const data = {}
 
   Favorite.findOne({
@@ -16,7 +17,11 @@ function profile(req, res) {
   })
     .populate('anime')
     .then((favorite) => {
-      data.anime = favorite.anime
+      if (favorite) {
+        data.anime = favorite.anime
+      } else {
+        data.anime = null
+      }
     })
     .then(() => {
       User.findById(req.user._id)
