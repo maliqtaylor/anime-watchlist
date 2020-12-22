@@ -1,6 +1,8 @@
 const axios = require('axios');
 const Anime = require('../models/anime')
 const Watchlist = require('../models/watchlist')
+const Favorite = require('../models/favorite');
+const favorite = require('../models/favorite');
 
 module.exports = {
   index,
@@ -22,32 +24,54 @@ function details(req, res) {
     .get(`https://kitsu.io/api/edge/anime/${req.params.id}`)
     .then((response) => {
       //if anime isnt in the db add mvp info here and then display the page
-      Watchlist.findOne({
+      const data = {}
+
+      Favorite.findOne({
         owner: req.user._id,
       })
         .populate('anime')
-        .then((watchlist) => {
-          let added;
+        .then((favorite) => {
+          if (favorite) {
 
-          if (watchlist) {
-
-            for (let i = 0; i < watchlist.anime.length; i++) {
-              const a = watchlist.anime[i];
+            for (let i = 0; i < favorite.anime.length; i++) {
+              const a = favorite.anime[i];
               if (Number(a.kitsuId) === Number(req.params.id)) {
-                added = true
+                data.faved = true
                 break;
               }
-              added = false
+              data.faved = false
             }
           }
+        }).then(() => {
+          Watchlist.findOne({
+            owner: req.user._id,
+          })
+            .populate('anime')
+            .then((watchlist) => {
 
-          res.render("anime/details", {
-            title: "Anime Details",
-            user: req.user,
-            anime: response.data.data,
-            watchlist,
-            added
-          });
+              if (watchlist) {
+
+                for (let i = 0; i < watchlist.anime.length; i++) {
+                  const a = watchlist.anime[i];
+                  if (Number(a.kitsuId) === Number(req.params.id)) {
+                    data.added = true
+                    break;
+                  }
+                  data.added = false
+                }
+              }
+
+              console.log(data.faved);
+
+              res.render("anime/details", {
+                title: "Anime Details",
+                user: req.user,
+                anime: response.data.data,
+                watchlist,
+                added: data.added,
+                favorited: data.faved
+              });
+            })
         })
     });
 }

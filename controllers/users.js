@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const Favorite = require("../models/favorite");
 
 module.exports = {
   profile,
@@ -8,12 +9,22 @@ module.exports = {
 };
 
 function profile(req, res) {
-  User.findById(req.user._id)
-    .populate("friends")
-    .then((user) => {
-      res.render("users/profile", { title: "Profile Page", user })
+  const data = {}
+
+  Favorite.findOne({
+    owner: req.user._id
+  })
+    .populate('anime')
+    .then((favorite) => {
+      data.anime = favorite.anime
+    }).then(() => {
+      User.findById(req.user._id)
+        .then((user) => {
+          res.render("users/profile", { title: "Profile Page", user, anime: data.anime })
+        })
     })
 }
+
 
 function update(req, res) {
   User.findByIdAndUpdate(req.user._id, req.body, { new: true })
