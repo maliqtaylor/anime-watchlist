@@ -1,39 +1,19 @@
 const axios = require('axios');
 const Anime = require('../models/anime')
-let num = 0
+const Watchlist = require('../models/watchlist')
 
 module.exports = {
   index,
   details,
   create,
-  prev,
-  next,
 }
 
 function index(req, res) {
-  num = 0
+  let num = 16 * (Number(req.query.page) - 1)
   const api = `https://kitsu.io/api/edge/anime?page%5Blimit%5D=16&page%5Boffset%5D=${num}`
   axios.get(api)
     .then((resp) => {
-      res.render("anime/index", { title: "Anime Index", user: req.user ? req.user : null, anime: resp.data.data, links: resp.data.links, num: num });
-    })
-}
-
-function next(req, res) {
-  num += 16
-  const api = `https://kitsu.io/api/edge/anime?page%5Blimit%5D=16&page%5Boffset%5D=${num}`
-  axios.get(api)
-    .then((resp) => {
-      res.render("anime/index", { title: "Anime Index", user: req.user ? req.user : null, anime: resp.data.data, links: resp.data.links, num: num });
-    })
-}
-
-function prev(req, res) {
-  num -= 16
-  const api = `https://kitsu.io/api/edge/anime?page%5Blimit%5D=16&page%5Boffset%5D=${num}`
-  axios.get(api)
-    .then((resp) => {
-      res.render("anime/index", { title: "Anime Index", user: req.user ? req.user : null, anime: resp.data.data, links: resp.data.links, num: num });
+      res.render("anime/index", { title: "Anime Index", user: req.user ? req.user : null, anime: resp.data.data, links: resp.data.links, page: req.query.page });
     })
 }
 
@@ -42,27 +22,32 @@ function details(req, res) {
     .get(`https://kitsu.io/api/edge/anime/${req.params.id}`)
     .then((response) => {
       //if anime isnt in the db add mvp info here and then display the page
-      Anime.findOne({
-        slug: req.body.slug
+      Watchlist.findOne({
+        owner: req.user._id,
       })
-        .populate('favoritedBy')
-        .then((anime) => {
-          if (anime) {
-            res.render("anime/details", {
-              title: "Anime Details",
-              user: req.user,
-              anime: response.data.data,
-              favoritedBy: anime.favoritedBy,
-              animeId: anime._id,
-            });
-          } else {
-            res.render("anime/details", {
-              title: "Anime Details",
-              user: req.user,
-              anime: response.data.data,
-              favoritedBy: [""],
-            });
+        .populate('anime')
+        .then((watchlist) => {
+          let added;
+
+          if (watchlist) {
+
+            for (let i = 0; i < watchlist.anime.length; i++) {
+              const a = watchlist.anime[i];
+              if (Number(a.kitsuId) === Number(req.params.id)) {
+                added = true
+                break;
+              }
+              added = false
+            }
           }
+
+          res.render("anime/details", {
+            title: "Anime Details",
+            user: req.user,
+            anime: response.data.data,
+            watchlist,
+            added
+          });
         })
     });
 }

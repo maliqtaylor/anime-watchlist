@@ -1,7 +1,40 @@
-<ul class="pagination">
-  <li class="<%=links.prev? '' : 'disabled' %>"><a href="/anime/prev"><i class="material-icons">chevron_left</i></a>
-  </li>
+<% page=Number(page) %>
+  <ul class="pagination">
+    <li class="<%=links.prev? '' : 'disabled' %>">
+      <a href="<%=links.prev? `/anime?page=${Number(page)-1}` : '#' %>">
+        <i class="material-icons">chevron_left</i>
+      </a>
+    </li>
 
-  <li class="<%=links.next? '' : 'disabled' %>"><a href="/anime/next"><i class="material-icons">chevron_right</i></a>
-  </li>
-</ul>
+    <li class="active blue">
+      <a href="/anime?page=<%=page %>">
+        <%=page %>
+      </a>
+    </li>
+    <li>
+      <a href="/anime?page=<%=page + 1 %>">
+        <%=page +1 %>
+      </a>
+    </li>
+    <li>
+      <a href="/anime?page=<%=page + 2 %>">
+        <%=page +2%>
+      </a>
+    </li>
+    <li>
+      <a href="/anime?page=<%=page + 3 %>">
+        <%=page +3%>
+      </a>
+    </li>
+    <li>
+      <a href="/anime?page=<%=page + 4 %>">
+        <%=page +4 %>
+      </a>
+    </li>
+
+    <li class="<%=links.next? '' : 'disabled' %>">
+      <a href="<%=links.next? `/anime?page=${Number(page)+1}` : '#' %>">
+        <i class="material-icons">chevron_right</i>
+      </a>
+    </li>
+  </ul>

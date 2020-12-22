@@ -46,14 +46,28 @@
         </a>
       </div>
       <div class="detail-page-links col s3">
-        <form action="/watchlist" method="POST">
-          <input type="hidden" name="imageUrl" value=<%=anime.attributes.posterImage.small%>>
-          <input type="hidden" name="slug" value=<%=anime.attributes.slug %>>
-          <input type="hidden" name="kitsuId" value=<%=anime.id%>>
-          <button onclick="M.toast({html: 'Added to Watchlist!', classes: 'rounded'})" type="submit"
-            class="waves-effect waves-light transparent">
-            <i class="material-icons">add_to_queue</i>
-          </button>
+        <% if (!added) { %>
+          <form action="/watchlist" method="POST">
+            <input type="hidden" name="imageUrl" value=<%=anime.attributes.posterImage.small%>>
+            <input type="hidden" name="slug" value=<%=anime.attributes.slug %>>
+            <input type="hidden" name="kitsuId" value=<%=anime.id%>>
+            <button onclick="M.toast({html: 'Added to Watchlist!', classes: 'rounded'})" type="submit"
+              class="waves-effect waves-light transparent">
+              <i class="material-icons">
+                <%= 'add_to_queue' %>
+              </i>
+            </button>
+          </form>
+          <% } else { %>
+            <form action="/watchlist/<%=anime.id%>/?_method=DELETE" method="POST">
+              <button onclick="M.toast({html: 'Removed to Watchlist!', classes: 'rounded'})" type="submit"
+                class="waves-effect waves-light transparent">
+                <i class="material-icons">
+                  <%= 'remove_from_queue' %>
+                </i>
+              </button>
+            </form>
+            <% } %>
       </div>
       <div class="detail-page-links col s3">
         <a href="#">

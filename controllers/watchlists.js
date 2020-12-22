@@ -4,6 +4,7 @@ const Anime = require('../models/anime')
 module.exports = {
   create,
   details,
+  remove,
 }
 
 function addToWatchlist(req, res) {
@@ -20,12 +21,13 @@ function addToWatchlist(req, res) {
         Watchlist.create(req.body)
           .then(() => {
             res.redirect(`/anime/${anime.kitsuId}`)
-            ///watchlist/${req.user._id}
           })
       })
     } else {
       Anime.findOne({ slug: req.body.slug }, (err, anime) => {
-        watchlist.anime.push(anime._id)
+        if (!watchlist.anime.includes(anime._id)) {
+          watchlist.anime.push(anime._id)
+        }
         watchlist.save()
         res.redirect(`/anime/${anime.kitsuId}`)
       })
@@ -50,4 +52,17 @@ function create(req, res) {
 
 function details(req, res) {
   res.render('watchlist/details', { title: 'Watchlist', user: req.user ? req.user : null })
+}
+
+function remove(req, res) {
+  Watchlist.findOne({
+    owner: req.user._id
+  })
+    .populate('anime')
+    .then((watchlist) => {
+      let idx = watchlist.anime.findIndex((a) => Number(a.kitsuId) === Number(req.params.id))
+      watchlist.anime.splice(idx, 1)
+      watchlist.save()
+      res.redirect(`/anime/${req.params.id}`)
+    })
 }
