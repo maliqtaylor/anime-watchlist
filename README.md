@@ -20,6 +20,7 @@
 * Materialize 
 * Mongoose
 * MongoDB
+* KitsuAPI
 ---
 ## Trello
 
@@ -27,9 +28,8 @@
 
 --- 
 ## Stretch Goals
-* Review my code and refactor/make more dry
 * Add posts on anime details pages
-* Catch errs and make a custom 404 page
+* Make a custom 404 page
 * Add direct message functionality
 * Add friend functionality
-* Add custom fonts 
+* Add search functionality
