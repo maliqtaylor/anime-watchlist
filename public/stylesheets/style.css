@@ -115,6 +115,10 @@ a:hover{
   margin-bottom: 8px;
 }
 
+.anime-image{
+  padding-top: 5px;
+}
+
 .gradient-box {
 	 margin: auto;
 	 position: relative;

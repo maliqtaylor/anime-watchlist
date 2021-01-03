@@ -53,5 +53,3 @@ function remove(req, res) {
       res.redirect(`/anime/${req.params.id}`)
     })
 }
-
-

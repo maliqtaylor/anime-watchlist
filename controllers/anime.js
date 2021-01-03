@@ -2,12 +2,13 @@ const axios = require('axios');
 const Anime = require('../models/anime')
 const Watchlist = require('../models/watchlist')
 const Favorite = require('../models/favorite');
-const favorite = require('../models/favorite');
+
 
 module.exports = {
   index,
   details,
   create,
+  search
 }
 
 function index(req, res) {
@@ -16,6 +17,15 @@ function index(req, res) {
   axios.get(api)
     .then((resp) => {
       res.render("anime/index", { title: "Anime Index", user: req.user ? req.user : null, anime: resp.data.data, links: resp.data.links, page: req.query.page });
+    })
+}
+
+function search(req, res) {
+  const query = req.query.search.split(' ').join('%20')
+  const api = `https://kitsu.io/api/edge/anime?filter[text]=${query}`
+  axios.get(api)
+    .then((resp) => {
+      res.render("anime/search", { title: "Anime Search", user: req.user ? req.user : null, anime: resp.data.data, links: resp.data.links });
     })
 }
 
