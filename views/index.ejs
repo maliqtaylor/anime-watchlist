@@ -1,16 +1,16 @@
 <%- include('partials/header') %>
-  <h1>Welcome, <%= user ? user.name : "user" %>
-  </h1>
-
   <div class="carousel watchlist-carousel" fullWidth=true>
 
     <% if (anime) { %>
       <% anime.forEach(a=> { %>
-        <a class="carousel-item" href="#one!">
-          <img src=<%=a.imageUrl%>>
-        </a>
-        <% }) %>
-          <% } %>
+        <% if (user) { %>
+          <a class="carousel-item" href="/anime/<%=a.kitsuId%>">
+            <% } else { %>
+
+              <% } %>
+                <img src=<%=a.imageUrl%>>
+                <% }) %>
+                  <% } %>
 
   </div>
 

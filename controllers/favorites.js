@@ -3,17 +3,28 @@ const Anime = require('../models/anime')
 const User = require('../models/user')
 
 module.exports = {
-  getAll,
   add,
+  create,
   remove
 }
 
-function getAll(params) {
-
+function create(req, res) {
+  Anime.findOne({
+    slug: req.body.slug
+  }).then((anime) => {
+    if (!anime) {
+      Anime.create(req.body)
+        .then(() => {
+          add(req, res)
+        })
+    } else {
+      add(req, res)
+    }
+  })
 }
 
-function add(req, res) {
 
+function add(req, res) {
   Favorite.findOne({
     owner: req.user._id
   }).then((favorite) => {

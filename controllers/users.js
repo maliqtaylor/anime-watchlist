@@ -9,7 +9,6 @@ module.exports = {
 };
 
 function profile(req, res) {
-  console.log('I Hit!!!');
   const data = {}
 
   Favorite.findOne({

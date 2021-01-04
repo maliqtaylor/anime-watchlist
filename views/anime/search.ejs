@@ -1,8 +1,4 @@
 <%- include('../partials/header') %>
-  <h1>
-    <%= title %>
-  </h1>
-
   <% function displayAnime(start, end) {%>
     <div class="row">
       <% for(let i=start; i < end; i ++){ %>
@@ -27,6 +23,6 @@
           </div>
         </div>
 
-        <%= displayAnime(0,4) %>
+        <%= displayAnime(0,anime.length -2) %>
 
       </div>

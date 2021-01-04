@@ -50,7 +50,7 @@
           <div class="carousel favorites">
             <% if (anime) { %>
               <% anime.forEach(a=> { %>
-                <a class="carousel-item" href="#one!"><img src="<%=a.imageUrl%> "></a>
+                <a class="carousel-item" href="/anime/<%= a.kitsuId %> "><img src="<%=a.imageUrl%> "></a>
                 <% }) %>
                   <% } %>
           </div>
